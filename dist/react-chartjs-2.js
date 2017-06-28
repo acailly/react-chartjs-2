@@ -2942,7 +2942,14 @@ var ChartComponent = function (_React$Component) {
         return;
       }
 
-      this.updateChart();
+      if (this.props.deferred) {
+        var self = this;
+        setTimeout(function () {
+          return self.updateChart();
+        }, 0);
+      } else {
+        this.updateChart();
+      }
     }
   }, {
     key: 'shouldComponentUpdate',

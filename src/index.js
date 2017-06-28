@@ -54,7 +54,13 @@ class ChartComponent extends React.Component {
       return;
     }
 
-    this.updateChart();
+    if(this.props.deferred){
+      const self = this
+      setTimeout(() => self.updateChart(), 0);
+    }
+    else{
+      this.updateChart();
+    }
   }
 
   shouldComponentUpdate(nextProps) {
